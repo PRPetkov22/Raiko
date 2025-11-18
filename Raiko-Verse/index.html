@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Легендата за Райко Багдатския</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Може да махнеш шрифта, ако искаш да е офлайн -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Montserrat",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#050816;
+      color:#f5f5f5;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    :root{
+      --accent:#ffcc33;
+      --accent2:#ff7a3c;
+      --bg-soft:#0f172a;
+      --card:#111827;
+      --muted:#9ca3af;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .page{min-height:100vh;}
+    header{
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(5,8,22,0.86);
+      border-bottom:1px solid rgba(148,163,184,0.2);
+    }
+    .nav{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0.7rem 1.25rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{
+      font-weight:800;
+      letter-spacing:0.08em;
+      font-size:1rem;
+      text-transform:uppercase;
+    }
+    .logo span{color:var(--accent)}
+    .nav-links{
+      display:flex;
+      gap:1.2rem;
+      font-size:0.9rem;
+      text-transform:uppercase;
+    }
+    .nav-links a{
+      padding:0.25rem 0;
+      position:relative;
+    }
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:-2px;
+      width:0;height:2px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transition:width .25s;
+    }
+    .nav-links a:hover::after{width:100%}
+
+    /* HERO */
+    .hero{
+      max-width:1100px;
+      margin:0 auto;
+      padding:2.5rem 1.25rem 3.5rem;
+      display:grid;
+      grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+      gap:2.5rem;
+      align-items:center;
+    }
+    @media(max-width:800px){
+      .hero{grid-template-columns:1fr}
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      padding:.25rem .7rem;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.4);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--muted);
+      margin-bottom:1rem;
+    }
+    .badge-dot{
+      width:8px;height:8px;border-radius:999px;
+      background:radial-gradient(circle,var(--accent),transparent);
+    }
+    .hero h1{
+      font-size:2.6rem;
+      margin-bottom:0.6rem;
+    }
+    .hero h1 span{color:var(--accent)}
+    .hero-sub{
+      font-size:1rem;
+      color:var(--muted);
+      max-width:34rem;
+    }
+    .hero-actions{
+      margin-top:1.4rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.8rem;
+    }
+    .btn{
+      border-radius:999px;
+      padding:0.6rem 1.4rem;
+      border:1px solid rgba(148,163,184,0.45);
+      font-size:0.9rem;
+      cursor:pointer;
+      background:transparent;
+      color:#f9fafb;
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+      transition:transform .18s, box-shadow .18s, background .18s, border-color .18s;
+    }
+    .btn-primary{
+      background:linear-gradient(120deg,var(--accent),var(--accent2));
+      color:#111827;
+      border-color:transparent;
+      box-shadow:0 12px 30px rgba(0,0,0,.5);
+      font-weight:600;
+    }
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(0,0,0,.65);}
+    .btn-outline:hover{
+      background:rgba(15,23,42,.9);
+      transform:translateY(-1px);
+      box-shadow:0 12px 35px rgba(0,0,0,.6);
+    }
+    .hero-meta{
+      margin-top:1rem;
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+
+    .hero-right{
+      position:relative;
+      padding:1.7rem 1.4rem;
+      border-radius:1.7rem;
+      background:radial-gradient(circle at 0 0,#1e293b,#020617);
+      border:1px solid rgba(148,163,184,.4);
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.75);
+    }
+    .hero-right::before{
+      content:"";position:absolute;
+      inset:-40%;opacity:.16;
+      background:
+        radial-gradient(circle at 20% 0,var(--accent) 0,transparent 55%),
+        radial-gradient(circle at 80% 100%,var(--accent2) 0,transparent 60%);
+      mix-blend-mode:screen;
+    }
+    .tag-pill{
+      position:absolute;
+      top:1.1rem;right:1.1rem;
+      padding:.3rem .7rem;
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.6);
+      color:var(--accent);
+    }
+    .portrait{
+      position:relative;
+      border-radius:1.2rem;
+      overflow:hidden;
+      border:1px solid rgba(148,163,184,.3);
+      background:#020617;
+    }
+    .portrait img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform-origin:center;
+      transition:transform 12s ease-out;
+    }
+    .portrait:hover img{
+      transform:scale(1.06);
+    }
+    .floating-label{
+      position:absolute;
+      left:1rem;bottom:1rem;
+      padding:.35rem .7rem;
+      background:rgba(15,23,42,.88);
+      border-radius:.9rem;
+      font-size:.75rem;
+      border:1px solid rgba(148,163,184,.6);
+      display:flex;
+      flex-direction:column;
+      gap:.2rem;
+    }
+    .floating-label span.small{font-size:.65rem;color:var(--muted)}
+
+    /* SECTION WRAPPER */
+    section{
+      max-width:1100px;
+      margin:0 auto;
+      padding:2.5rem 1.25rem;
+    }
+    .section-title{
+      font-size:1.4rem;
+      margin-bottom:.6rem;
+    }
+    .section-sub{
+      color:var(--muted);
+      font-size:.9rem;
+      max-width:38rem;
+      margin-bottom:1.5rem;
+    }
+
+    /* TIMELINE */
+    .timeline{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(0,1.4fr);
+      gap:2.2rem;
+    }
+    @media(max-width:900px){.timeline{grid-template-columns:1fr}}
+    .timeline-steps{
+      display:flex;
+      flex-direction:column;
+      gap:.6rem;
+    }
+    .tl-step{
+      padding:.7rem .9rem;
+      border-radius:1rem;
+      background:#020617;
+      border:1px solid rgba(51,65,85,.9);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      transition:background .18s, border-color .18s, transform .18s;
+      font-size:.9rem;
+    }
+    .tl-step span.label{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .tl-step small{
+      font-size:.7rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .tl-step.active{
+      border-color:var(--accent);
+      background:linear-gradient(120deg,#0f172a,#020617);
+      transform:translateY(-1px);
+    }
+    .tl-step-dot{
+      width:10px;height:10px;border-radius:999px;
+      background:rgba(148,163,184,.6);
+    }
+    .tl-step.active .tl-step-dot{
+      background:radial-gradient(circle,var(--accent),transparent);
+    }
+    .tl-content{
+      border-radius:1.4rem;
+      background:radial-gradient(circle at 0 0,#1e293b,#020617);
+      border:1px solid rgba(148,163,184,.5);
+      padding:1.3rem 1.3rem 1.4rem;
+      min-height:240px;
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);
+      gap:1.2rem;
+    }
+    @media(max-width:650px){.tl-content{grid-template-columns:1fr}}
+    .tl-text-title{
+      font-weight:600;
+      margin-bottom:.4rem;
+    }
+    .tl-text-body{
+      font-size:.87rem;
+      color:var(--muted);
+      margin-bottom:.6rem;
+    }
+    .tl-tag{
+      display:inline-flex;
+      padding:.2rem .55rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.4);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--accent2);
+    }
+    .tl-image{
+      border-radius:1rem;
+      overflow:hidden;
+      border:1px solid rgba(148,163,184,.35);
+      background:#020617;
+      position:relative;
+    }
+    .tl-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .tl-image-note{
+      position:absolute;
+      left:.65rem;top:.6rem;
+      font-size:.7rem;
+      padding:.2rem .55rem;
+      border-radius:.7rem;
+      background:rgba(15,23,42,.86);
+      border:1px solid rgba(148,163,184,.5);
+    }
+
+    /* COMIC GRID */
+    .comic-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+      gap:1rem;
+    }
+    .comic-card{
+      border-radius:1.1rem;
+      background:var(--card);
+      border:1px solid rgba(148,163,184,.45);
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform .18s, box-shadow .18s, border-color .18s;
+      position:relative;
+    }
+    .comic-card:hover{
+      transform:translateY(-4px);
+      border-color:var(--accent);
+      box-shadow:0 20px 40px rgba(0,0,0,.7);
+    }
+    .comic-card img{
+      height:220px;
+      width:100%;
+      object-fit:cover;
+    }
+    .comic-card-footer{
+      padding:.6rem .75rem .7rem;
+      font-size:.8rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+    }
+    .comic-tag{
+      padding:.15rem .55rem;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      font-size:.7rem;
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.88);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s;
+      z-index:40;
+    }
+    .lightbox.open{
+      opacity:1;
+      pointer-events:auto;
+    }
+    .lightbox-content{
+      max-width:90vw;
+      max-height:90vh;
+    }
+    .lightbox-content{
+  max-width:95vw;
+  max-height:95vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.lightbox-content img{
+  max-width:60%;
+  max-height:60%;
+  object-fit:contain;
+}
+    .lightbox-close{
+      position:fixed;
+      top:1.3rem;right:1.3rem;
+      font-size:1.8rem;
+      cursor:pointer;
+      color:#e5e7eb;
+    }
+
+    /* LEGEND SECTION */
+    .legend-wrap{
+      display:grid;
+      grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr);
+      gap:2rem;
+    }
+    @media(max-width:900px){.legend-wrap{grid-template-columns:1fr}}
+    .legend-text{
+      font-size:.92rem;
+      color:var(--muted);
+    }
+    .legend-text p{margin-bottom:.7rem}
+    .legend-highlight{
+      padding:.7rem .9rem;
+      border-radius:1rem;
+      background:#020617;
+      border:1px solid rgba(148,163,184,.5);
+      font-size:.85rem;
+      margin-top:.7rem;
+      color:#e5e7eb;
+    }
+    .orb{
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  position:relative;
+  margin:auto;
+  overflow:hidden;
+  filter:
+    drop-shadow(0 0 40px rgba(255,204,51,0.4))
+    drop-shadow(0 0 80px rgba(255,204,51,0.25));
+  transform: translate(50px, -80px);
+}
+
+.orb::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  /* снимката */
+  background:url("images/racho.png") center/cover no-repeat;
+
+  /* по-мек и широк blur */
+  filter:blur(0px) brightness(1.15);
+
+  /* slight zoom за по-добро изрязване */
+  transform:scale(1);
+}
+
+.orb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  
+  /* красиви преливки, за да не изглежда като груб кръг */
+  background:
+    radial-gradient(circle,
+      rgba(255,204,51,0.25) 0%,
+      rgba(255,204,51,0.15) 40%,
+      rgba(0,0,0,0.0) 75%);
+
+  /* смекчава ръбовете */
+  pointer-events:none;
+}
+
+
+    /* FOOTER */
+    footer{
+      padding:1.8rem 1.25rem 2.3rem;
+      max-width:1100px;
+      margin:0 auto;
+      font-size:.8rem;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:.8rem;
+      border-top:1px solid rgba(31,41,55,.9);
+    }
+    footer span strong{color:var(--accent)}
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <nav class="nav">
+      <div class="logo">RAIKO <span>VERSE</span></div>
+      <div class="nav-links">
+        <a href="#timeline">Живот</a>
+        <a href="#comics">Комикси</a>
+        <a href="#legend">Легенда</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <span>официален сайт на Райко Багдатския</span>
+      </div>
+      <h1>Райко <span>Багдатския</span>: от първата цигара до световното господство</h1>
+      <p class="hero-sub">
+        Историята на един млад сладур, който се ражда с бутилка гроздова в сърцето,
+        цигара в ръката и в крайна сметка се превръща в турбо гъзар полицай и
+        митично същество, което упиянява света само с поглед.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="scrollToId('timeline')">Разгледай живота</button>
+        <button class="btn btn-outline" onclick="scrollToId('comics')">Комикс вселена</button>
+      </div>
+      <div class="hero-meta">
+        • В изобилие: ракия, цигари, танци и легенди.<br>
+        • Подходящо за: пълнолетни с чувство за хумор.
+      </div>
+    </div>
+    <div class="hero-right">
+        
+        <div class="portrait">
+      <div class="tag-pill">Turbo Gъзар Cop</div>
+        <img src="images/Raiko.PNG" alt="Райко Рикията">
+            <div class="floating-label">
+          <span>„Райковата“ – A1 класика</span>
+          <span class="small">ръчна продукция, контрол на качеството: лично от Райко</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <h2 class="section-title">Таймлайн на един митичен живот</h2>
+    <p class="section-sub">
+      От първите експерименти с ракия на село, през годините в академията и
+      полицейската служба, до легендарното превръщане в същество, което хипнотизира
+      с поглед. Избери етап, за да видиш как се ражда гъзарят.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-steps">
+        <div class="tl-step active" data-step="0">
+          <span class="label">
+            <div class="tl-step-dot"></div>
+            <span>1. Детството на кацата</span>
+          </span>
+          <small>село, първи глътки</small>
+        </div>
+        <div class="tl-step" data-step="1">
+          <span class="label">
+            <div class="tl-step-dot"></div>
+            <span>2. Първата униформа</span>
+          </span>
+          <small>млад полицай</small>
+        </div>
+        <div class="tl-step" data-step="2">
+          <span class="label">
+            <div class="tl-step-dot"></div>
+            <span>3. Градска легенда</span>
+          </span>
+          <small>ракия, цигари, респект</small>
+        </div>
+        <div class="tl-step" data-step="3">
+          <span class="label">
+            <div class="tl-step-dot"></div>
+            <span>4. Храмът в Средец</span>
+          </span>
+          <small>епично търсене</small>
+        </div>
+        <div class="tl-step" data-step="4">
+          <span class="label">
+            <div class="tl-step-dot"></div>
+            <span>5. Преобразяването</span>
+          </span>
+          <small>поглед, който упоява</small>
+        </div>
+        <div class="tl-step" data-step="5">
+          <span class="label">
+            <div class="tl-step-dot"></div>
+            <span>6. Патрон до пенсия</span>
+          </span>
+          <small>стар гъзар, нови истории</small>
+        </div>
+      </div>
+
+      <div class="tl-content">
+        <div>
+          <div class="tl-text-title" id="tl-title"></div>
+          <div class="tl-text-body" id="tl-body"></div>
+          <div class="tl-tag" id="tl-tag"></div>
+        </div>
+        <div class="tl-image">
+          <!-- замести с реални кадри -->
+          <img id="tl-img" src="images/timeline-child.jpg" alt="Етап от живота на Райко">
+          <div class="tl-image-note" id="tl-note"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMICS -->
+  <section id="comics">
+    <h2 class="section-title">Комикс вселената на Райко</h2>
+    <p class="section-sub">
+      Търсенето на бутилката из Средец,
+      храма в парка, мегапревръщането и гъзарската полицейска сага.
+      Кликни на страница, за да я отвориш голяма.
+    </p>
+
+    <div class="comic-grid">
+      <!-- Просто сменяш src към твоите файлове: comic-01.jpg, comic-02.jpg и т.н. -->
+      <div class="comic-card" data-img="images/1.jpg">
+        <img src="images/1.jpg" alt="Комикс страница 1">
+        <div class="comic-card-footer">
+          <span>Събуждането и цигарата</span>
+          <span class="comic-tag">Ep1</span>
+        </div>
+      </div>
+
+      <div class="comic-card" data-img="images/2.jpg">
+        <img src="images/2.jpg" alt="Комикс страница 2">
+        <div class="comic-card-footer">
+          <span>Обиколката из града</span>
+          <span class="comic-tag">Ep2</span>
+        </div>
+      </div>
+
+      <div class="comic-card" data-img="images/3.jpg">
+        <img src="images/3.jpg" alt="Комикс страница 3">
+        <div class="comic-card-footer">
+          <span>Храмът в парка</span>
+          <span class="comic-tag">Ep3</span>
+        </div>
+      </div>
+
+      <div class="comic-card" data-img="images/4.jpg">
+        <img src="images/4.jpg" alt="Комикс страница 4">
+        <div class="comic-card-footer">
+          <span>Глътката</span>
+          <span class="comic-tag">Ep4</span>
+        </div>
+      </div>
+
+      <div class="comic-card" data-img="images/5.jpg">
+        <img src="images/5.jpg" alt="Комикс страница 5">
+        <div class="comic-card-footer">
+          <span>Опияненият Средец</span>
+          <span class="comic-tag">Ep5</span>
+        </div>
+      </div>
+
+      <div class="comic-card" data-img="images/6.jpg">
+        <img src="images/6.jpg" alt="Комикс: животът на Райко">
+        <div class="comic-card-footer">
+          <span>Падението на опиянения гигант</span>
+          <span class="comic-tag">Ep6</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGEND -->
+  <section id="legend">
+    <h2 class="section-title">Легендата за Райковата Ракия</h2>
+    <p class="section-sub">
+      Малко по-сериозно (доколкото може) описание на митологията:
+      защо тази бутилка, този човек и този поглед се превръщат в градска притча.
+    </p>
+
+    <div class="legend-wrap">
+      <div class="legend-text">
+        <p>
+          <strong>Райко Петков</strong> започва деня класически: аларма, въздишка,
+          една цигара до прозореца. Но докато градът още се събужда, той усеща
+          най-страшното – бутилката <em>Райкова Ракия</em> липсва. Не е в шкафа, не е под
+          масата, не е и при комшиите.
+        </p>
+        <p>
+          Следва епичен поход из целия град Средец: улици, блокове, квартални
+          магазинчета, спирки, дюкяни. Никой не знае, всеки е „чувал нещо“,
+          но бутилката си остава мит.
+        </p>
+        <p>
+          В крайна сметка пътят го отвежда в парка – и там, в някакъв забравен
+          от времето малък „храм“, бутилката го чака на пиедестал. Без прах,
+          без паяци, сякаш току-що е оставена. Райко отпива една мощна глътка.
+        </p>
+        <p>
+          В този момент <strong>той вече не е просто човек</strong>. Погледът му
+          започва да свети, силата му расте, а присъствието му упоява всеки
+          минувач. Хората го гледат и им става едновременно леко, весело и малко
+          нереално, като след твърде дълга вечер в механа.
+        </p>
+        <p class="legend-highlight">
+          Казват, че когато в Средец нощта стане прекалено тиха, ветровете носят
+          лек мирис на гроздова, а някъде далеч се чува полицейска сирена и
+          смях. Ако тогава видиш силует с бутилка в едната ръка и цигара в другата –
+          по-добре се усмихни. Най-вероятно току-що си срещнал Райко Рикията.
+        </p>
+      </div>
+
+      <div class="orb">
+        <div class="orb-inner">
+          <div>
+            <span style="color:var(--muted);font-size:.75rem;">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <strong>RaikoVerse</strong>. Фен сайт, неофициална митология.</span>
+    <span>Създаден с малко HTML, малко магия и подозрително много ракия в сюжета.</span>
+  </footer>
+</div>
+
+<!-- LIGHTBOX + TIMELINE LOGIC -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Комикс страница">
+  </div>
+  <div class="lightbox-close" onclick="closeLightbox()">×</div>
+</div>
+
+<script>
+  const timelineData = [
+    {
+      title: "Детството на кацата",
+      body: "Малък Райко седи върху каца с грозде в двора. Бабите шепнат, че детето \
+има усет към \"материала\" – вместо сок пита кога става ракия. Първите цигари са \
+откраднати от баща му, първите лекции – че така не се прави. Спойлер: не ги слуша.",
+      tag: "origin story",
+      img: "images/timeline-child.jpg",
+      note: "село, първи глътки и първи кашлици"
+    },
+    {
+      title: "Първата униформа",
+      body: "Млад, изгладен и гладко избръснат, Райко влиза в системата. \
+Полицейска академия, строеви, изпити. В джоба – малко шишенце с домашна гроздова, \
+\"за храброст\". Чете закона внимателно, за да знае точно колко може да го \
+разтяга по човешки.",
+      tag: "rookie cop",
+      img: "images/timeline-rookie.jpg",
+      note: "униформа + бутилка = стил"
+    },
+    {
+      title: "Градска легенда",
+      body: "След години по улиците всички вече знаят: ако те спре Райко, ще има \
+две неща – респект и лаф. Понякога леко мирише на гроздова, но никой не се \
+оплаква: регулира и движението, и настроението.",
+      tag: "neighbourhood hero",
+      img: "images/timeline-legend.jpg",
+      note: "патрулка, ракия и много лаф"
+    },
+    {
+      title: "Храмът в Средец",
+      body: "Една сутрин любимата бутилка изчезва. Започва епично търсене из \
+целия град. След куп забутани улици и странни срещи, Райко стига до малък \
+древен храм в парка. Там, на пиедестал, грее точно неговата гроздова.",
+      tag: "quest",
+      img: "images/timeline-temple.jpg",
+      note: "пиедестал за гроздова, как иначе"
+    },
+    {
+      title: "Преобразяването",
+      body: "Една дълбока глътка. Вятърът спира, въздухът натежава, а Райко \
+изведнъж става по-висок, по-силен и много по-мистичен. Очите му проблясват, \
+а хората, които го погледнат, усещат леко замайване и неочакван прилив на \
+дружелюбие.",
+      tag: "mythical upgrade",
+      img: "images/timeline-transformation.jpg",
+      note: "окончателно turbo гъзар режим"
+    },
+    {
+      title: "Патрон до пенсия",
+      body: "Годините минават, но Райко си остава същият: малко по-бавен, \
+малко по-мъдър, но с неизменната чаша, цигара и историите за това как \
+\"едно време хванахме света пиян\". В квартала вече не е просто полицай – \
+той е институция.",
+      tag: "retired legend",
+      img: "images/timeline-retired.jpg",
+      note: "пенсия, но без почивка от легенди"
+    }
+  ];
+
+  function renderTimeline(step){
+    const d = timelineData[step];
+    document.getElementById("tl-title").textContent = d.title;
+    document.getElementById("tl-body").textContent = d.body;
+    document.getElementById("tl-tag").textContent = d.tag;
+    document.getElementById("tl-img").src = d.img;
+    document.getElementById("tl-note").textContent = d.note;
+  }
+
+  renderTimeline(0);
+
+  document.querySelectorAll(".tl-step").forEach(stepEl=>{
+    stepEl.addEventListener("click", ()=>{
+      document.querySelectorAll(".tl-step").forEach(s=>s.classList.remove("active"));
+      stepEl.classList.add("active");
+      const idx = parseInt(stepEl.dataset.step,10);
+      renderTimeline(idx);
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll(".comic-card").forEach(card=>{
+    card.addEventListener("click", ()=>{
+      const src = card.dataset.img;
+      lightboxImg.src = src;
+      lightbox.classList.add("open");
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.classList.remove("open");
+    lightboxImg.src = "";
+  }
+  lightbox.addEventListener("click", e=>{
+    if(e.target === lightbox) closeLightbox();
+  });
+
+  function scrollToId(id){
+    const el = document.getElementById(id);
+    if(el){el.scrollIntoView({behavior:"smooth",block:"start"});}
+  }
+</script>
+</body>
+</html>
